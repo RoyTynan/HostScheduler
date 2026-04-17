@@ -70,7 +70,6 @@ export default function HostTab() {
   const [errClearing,   setErrClearing]   = useState(false)
   const [errClearWarn,  setErrClearWarn]  = useState(false)
   const [expandedErr,   setExpandedErr]   = useState<string | null>(null)
-  const [errTesting,    setErrTesting]    = useState(false)
 
   const loadErrors = useCallback(async () => {
     setErrLoading(true)
@@ -358,18 +357,6 @@ export default function HostTab() {
               <span className={styles.taskCount}>{errors.length}</span>
               <button className={styles.btnRefresh} onClick={loadErrors} disabled={errLoading}>
                 {errLoading ? '…' : '↺'}
-              </button>
-              <button
-                className={styles.btnTest}
-                disabled={errTesting}
-                onClick={async () => {
-                  setErrTesting(true)
-                  await api.errorsTest()
-                  await loadErrors()
-                  setErrTesting(false)
-                }}
-              >
-                {errTesting ? '…' : 'fire test'}
               </button>
               <button
                 className={`${styles.btnClear} ${errClearWarn ? styles.btnClearWarn : ''}`}

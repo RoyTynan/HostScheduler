@@ -40,3 +40,67 @@
       raise RuntimeError(f"test exception at {name} level")
   RuntimeError: test exception at CRITICAL level
 
+2026-04-17 15:25:00  WARNING   schedhost.main.host_routes (default.py:118)
+  [Errno 111] Connection refused
+  Traceback (most recent call last):
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+      yield
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+      resp = self._pool.handle_request(req)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+      raise exc from None
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+      response = connection.handle_request(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+      raise exc
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+      stream = self._connect(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+      stream = self._network_backend.connect_tcp(**kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+      with map_exceptions(exc_map):
+    File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+      self.gen.throw(value)
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+      raise to_exc(exc) from exc
+  httpcore.ConnectError: [Errno 111] Connection refused
+  
+  The above exception was the direct cause of the following exception:
+  
+  Traceback (most recent call last):
+    File "/home/roy/mcp-context/repos/HostScheduler/server/schedhost/main.py", line 642, in host_routes
+      r = httpx.get(f"http://localhost:{host_port}/", timeout=2.0)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_api.py", line 195, in get
+      return request(
+             ^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_api.py", line 109, in request
+      return client.request(
+             ^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+      return self.send(request, auth=auth, follow_redirects=follow_redirects)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+      response = self._send_handling_auth(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+      response = self._send_handling_redirects(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+      response = self._send_single_request(request)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+      response = transport.handle_request(request)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+      with map_httpcore_exceptions():
+    File "/usr/lib/python3.12/contextlib.py", line 158, in __exit__
+      self.gen.throw(value)
+    File "/home/roy/mcp-context/repos/HostScheduler/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+      raise mapped_exc(message) from exc
+  httpx.ConnectError: [Errno 111] Connection refused
+

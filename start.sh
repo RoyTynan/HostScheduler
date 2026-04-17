@@ -23,7 +23,7 @@ until curl -sf http://localhost:$MONITOR_PORT/routes > /dev/null 2>&1; do
 done
 
 # Start Next.js frontend
-PORT=$PORT cd frontend && npm run dev &
+PORT=$PORT NEXT_TURBOPACK=0 cd frontend && npm run dev &
 FRONTEND_PID=$!
 
 cd ..

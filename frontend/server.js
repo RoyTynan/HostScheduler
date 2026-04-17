@@ -7,7 +7,7 @@ const port    = parseInt(process.env.PORT   || '3000', 10)
 const backend = process.env.API_URL?.replace(/^http/, 'ws') ?? 'ws://localhost:8000'
 const dev     = process.env.NODE_ENV !== 'production'
 
-const app    = next({ dev, turbopack: true })
+const app    = next({ dev, webpack: true })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
@@ -39,6 +39,6 @@ app.prepare().then(() => {
   })
 
   server.listen(port, () => {
-    console.log(`> llm-os frontend ready on http://localhost:${port}`)
+    console.log(`> HostScheduler frontend ready on http://localhost:${port}`)
   })
 })
