@@ -23,7 +23,10 @@ Apart from this being a runnable application it should also be reagarded as a te
 
 ## Contact
 
-You can contact me on roytynandev@gmail.com<br><br>
+**Contact:** roytynandev  gmail.com     
+
+don't forget the @ before gmail
+
 I try to reply to everyone but I can't guarantee a quick response.<br>
 Any criticisms please keep constructive, otherwise I'll just crawl off to my local pub for a calming beer or ten.<br>
 I live in West Yorkshire, England btw.
